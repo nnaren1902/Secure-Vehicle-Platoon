@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!-- generated on 03/22/13 17:39:44 by SUMO polyconvert Version dev-SVN-r13532
+<?xml version="1.0" encoding="UTF-8"?>
+
+<configuration xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="http://sumo.sf.net/xsd/polyconvertConfiguration.xsd">
+
+    <input>
+        <dlr-navteq-poi-files value="dlr_navteq_pois.txt"/>
+    </input>
+
+    <output>
+        <output-file value="pois.poi.xml"/>
+    </output>
+
+    <projection>
+        <proj.scale value="5"/>
+        <proj.utm value="true"/>
+    </projection>
+
+    <report>
+        <verbose value="true"/>
+    </report>
+
+</configuration>
+-->
+
+<shapes>
+    <poi id="1" type="unknown" color="51,128,255" layer="-1.00" x="363758.16" y="5781233.23"/>
+    <poi id="2" type="unknown" color="51,128,255" layer="-1.00" x="360180.57" y="5788908.83"/>
+</shapes>

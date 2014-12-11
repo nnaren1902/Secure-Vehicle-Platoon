@@ -1,0 +1,47 @@
+# same as one_time but with new style definition (no id in routes)
+noid_one_time
+
+# same as increasing_time but with new style definition (no id in routes)
+noid_increasing_time
+
+# same as unsorted_time but with new style definition (no id in routes)
+noid_unsorted_time
+
+# same as noid_increasing_time, but a non-standard vehicle type is defined
+with_vehtype
+
+# same as with_vehtype, but two non-standard vehicle types are defined
+with_2vehtypes
+
+# same as with_2vehtypes, but separate output file
+separate_vehtypes
+
+# same as with_2vehtypes, but overwriting default vehicle type
+defaulttype_overwrite
+
+# same as noid_increasing_time, but a non-standard vehicle type is used but not defined
+with_vehtype_nodef
+
+# Checks whether passing optional vehicle attributes works
+withparams
+
+# Checks whether the vehicle class is processed
+with_vehtype_withclass
+
+# Checks whether the vehicle type can be omitted
+no_vehtype
+
+# Checks whether exit time output works
+exit_times
+
+# Tests whether processing vehicle parameter works
+vtypecheck
+
+# same as noid_one_time but with a trggiered vehicle and an additional person definition
+with_persons
+
+# same as noid_one_time but with a stop
+with_stops
+
+# Tests for false user input
+errors

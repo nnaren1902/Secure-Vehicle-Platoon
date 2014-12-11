@@ -1,0 +1,26 @@
+# variation on depart times and stop positions may induce collisions
+collision
+
+# Whether vehicles driving on a ringway do not brake
+ringNoBrake
+
+# Lane change checks
+lane_change
+
+# detector comparisons
+#output
+
+# fundamental diagram
+fundamental
+
+# birthday present
+b50
+
+# testing socket output
+socketout
+
+# testing 'extended' sumo features
+extended
+
+# testing sumo binary xml
+binary

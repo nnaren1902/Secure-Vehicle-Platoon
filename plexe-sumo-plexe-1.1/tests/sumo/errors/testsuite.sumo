@@ -1,0 +1,28 @@
+# Tests what happens if an unknown option is passed
+unknown_option
+
+# Tests what happens if an unknown option is passed via config
+unknown_config_option
+
+# Tests what happens the first parameter is missing
+# disabled because the --mesosim param interferes
+# missing_first_param
+
+# the value for --begin is not a number
+invalid_time
+# the value for --verbose is not a propper bool
+invalid_float
+# the value for --device.rerouting.probability is not a float
+invalid_bool
+
+# Tests for broken routes
+routes
+
+# Tests for duplicate structures (replacing XMLIdAlreadyUsedException)
+duplicates
+
+# Tests with broken traffic lights
+traffic_lights
+
+# error handling for person related input
+person

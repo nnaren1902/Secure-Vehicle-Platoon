@@ -1,0 +1,6 @@
+<routes xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="http://sumo.sf.net/xsd/routes_file.xsd">
+<vehicle id="213" depart="triggered" >
+  <route edges="beg" />
+</vehicle>
+<person id="4" depart="1" />
+</routes>

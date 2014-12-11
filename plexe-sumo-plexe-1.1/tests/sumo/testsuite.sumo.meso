@@ -1,0 +1,23 @@
+# whether specification is implemented
+spec
+
+# handling of basic structures
+basic
+
+# output tests
+output
+
+# tests for additional structures
+extended
+
+# model properties
+model
+
+# Tests for mesoscopic features
+meso
+
+# error handling tests
+errors
+
+# bug handling tests
+bugs
