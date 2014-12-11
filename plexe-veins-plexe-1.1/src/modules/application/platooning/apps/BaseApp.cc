@@ -70,14 +70,49 @@ void BaseApp::handleLowerMsg(cMessage *msg) {
 
 		PlatooningBeacon *epkt = dynamic_cast<PlatooningBeacon *>(enc);
 		ASSERT2(epkt, "received UnicastMessage does not contain a PlatooningBeacon");
+		static double leaderAcceleration;
 
 		//if the message comes from the leader
 		if (epkt->getVehicleId() == 0) {
-			traci->commandSetPlatoonLeaderData(traci->getExternalId(), epkt->getSpeed(), epkt->getAcceleration(), epkt->getPositionX(), epkt->getPositionY(), epkt->getTime());
+		    if(myId == 2){
+		        leaderAcceleration = epkt->getAcceleration();
+		    }
+		    traci->commandSetPlatoonLeaderData(traci->getExternalId(), epkt->getSpeed(), epkt->getAcceleration(), epkt->getPositionX(), epkt->getPositionY(), epkt->getTime());
 		}
 		//if the message comes from the vehicle in front
+		//use a window to accept the data
 		if (epkt->getVehicleId() == myId - 1) {
-			traci->commandSetPrecedingVehicleData(traci->getExternalId(), epkt->getSpeed(), epkt->getAcceleration(), epkt->getPositionX(), epkt->getPositionY(), epkt->getTime());
+		    //if the node behind the malicious node
+		    if (myId == 2){
+		        double window = abs(leaderAcceleration - currentControllerAcceleration);
+		        window= 0.4*window;
+		        double precedingAcceleration = epkt->getAcceleration();
+		        //if leader acceleration greater than own acceleration
+		        if(leaderAcceleration > currentControllerAcceleration){
+		        if( (precedingAcceleration < leaderAcceleration+window ) && (precedingAcceleration > currentControllerAcceleration-window)) {
+
+		            traci->commandSetPrecedingVehicleData(traci->getExternalId(), epkt->getSpeed(), epkt->getAcceleration() , epkt->getPositionX(), epkt->getPositionY(), epkt->getTime());
+		            } else {
+		                traci->commandSetPrecedingVehicleData(traci->getExternalId(), epkt->getSpeed(), leaderAcceleration , epkt->getPositionX(), epkt->getPositionY(), epkt->getTime());
+
+		            }
+		        }
+		        //if the leader acceleration less than you own accelration
+		        if(leaderAcceleration < currentControllerAcceleration){
+	                if( (precedingAcceleration < currentControllerAcceleration+window ) && (precedingAcceleration > leaderAcceleration-window) ) {
+
+	                    traci->commandSetPrecedingVehicleData(traci->getExternalId(), epkt->getSpeed(), epkt->getAcceleration() , epkt->getPositionX(), epkt->getPositionY(), epkt->getTime());
+	                    } else {
+	                        traci->commandSetPrecedingVehicleData(traci->getExternalId(), epkt->getSpeed(), leaderAcceleration , epkt->getPositionX(), epkt->getPositionY(), epkt->getTime());
+
+	                    }
+
+
+		        }
+		    }
+		    //if you are not 3rd vehicle
+		    else
+		        traci->commandSetPrecedingVehicleData(traci->getExternalId(), epkt->getSpeed(), epkt->getAcceleration(), epkt->getPositionX(), epkt->getPositionY(), epkt->getTime());
 		}
 
 	}
